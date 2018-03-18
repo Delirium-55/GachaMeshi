@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<title>タイトル</title>
+	<style>
+		body {
+			background-image: url(/images/img.jpeg);
+		}
+	</style>
+	<link rel="stylesheet" href="/style.css">
+	
+	<script>
+	$(function(){
+    	// 「ページトップへ戻るボタン」の要素を隠します
+    	$('#pagetop').hide();
+    	// スクロールした場合のアクションが記されています
+    	$(window).scroll(function(){
+        	// スクロール位置が200pxを超えた場合に「ページトップへ戻るボタン」をフェードインで出現させる
+        	if ($(this).scrollTop() &gt; 200) {
+            	$('#pagetop').fadeIn();
+        	}
+        	// スクロール位置が200px以下の場合は「ページトップへ戻るボタン」を消しておく（フェードアウトで消える）
+        	else {
+            	$('#pagetop').fadeOut();
+        	}
+    	});
+    	// 「ページトップへ戻るボタン」をクリックした場合のページトップへ戻るスピードの速さが記されています
+    	$('#pagetop').click(function(){
+        	$('html,body').animate({
+            	scrollTop: 0 }, 500);
+        	return false;
+    	});
+//更新
+function koshin(){
+  location.reload();
+}
+	});
+	
+	
+</script>
+
+</head>
+<body style="background-image: url(/images/111.jpg)">
+	
+	<header>
+   <img src="./images/003.png" height="50" width="70">
+   <img src="./images/004.png" height="40" width="265">
+	</header>
+
+<article>
+<h1><%= @title %></h1>
+<p>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</p>
+<h3>材料</h3>
+<div>
+	<%= @zairyou %>
+</div>
+
+<p>━━━━━━━━━━━━━━━━━━━━━━━━━━━</p>
+
+<h3>レシピの生い立ち</h3>
+<div>
+	<%= @comment %>
+</div>
+
+<p>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</p>
+<h3>手順</h3>
+<div>
+	<%= @step %>
+</div>
+<ul>
+	  <% @links.each do |link| %>
+	    <li>	
+		  <%= link %><br><br>
+		  <%= @imgs[link] %>
+	  </li>
+	  
+	  <div>
+	<%= @kotsu%>
+      </div>
+  <% end %>
+</ul>
+<p>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</p>
+
+<h1>おめでとうございます!<p>あなたは「コンビニ弁当を食べる」を回避できました！</p></h1>
+</article>
+
+<p id="pagetop"><a href="#container"><img src="/images/033.png" height="100" width="100" alt="ページトップボタン"></a></p>
+ 
+
+
+<article>
+	
+	<h1>困ったらGoogleで調べろ！！！</h1>
+</article>
+
+</body>
+</html>
